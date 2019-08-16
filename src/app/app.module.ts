@@ -15,6 +15,10 @@ import { CategoriaListComponent } from './categoria/categoria-list/categoria-lis
 import { ProduttoreListComponent } from './produttore/produttore-list/produttore-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateAccountComponent } from './account/create-account/create-account.component';
+import { LoginComponent } from './login/login.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,11 @@ import { CreateAccountComponent } from './account/create-account/create-account.
     ProductListComponent,
     CategoriaListComponent,
     ProduttoreListComponent,
-    CreateAccountComponent
+    CreateAccountComponent,
+    LoginComponent,
+    HeaderComponent,
+    FooterComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
