@@ -1,13 +1,12 @@
-import { AccountService } from './account.service';
 import { TestBed } from '@angular/core/testing';
 
 
 
-describe('AccountService', () => {
+describe('BasicAuthHttpInterceptService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: AccountService = TestBed.get(AccountService);
+    const service: BasicAuthHttpInterceptService = TestBed.get(BasicAuthHttpInterceptService);
     expect(service).toBeTruthy();
   });
 });

@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CreateProductComponent } from './product/create-product/create-product.component';
@@ -13,12 +12,13 @@ import { ProductListComponent } from './product/product-list/product-list.compon
 import { FormsModule } from '@angular/forms';
 import { CategoriaListComponent } from './categoria/categoria-list/categoria-list.component';
 import { ProduttoreListComponent } from './produttore/produttore-list/produttore-list.component';
-import { HttpClientModule } from '@angular/common/http';
-import { CreateAccountComponent } from './account/create-account/create-account.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LogoutComponent } from './logout/logout.component';
+import { BasicAuthHtppInterceptorService } from './service/basic-auth-http-intercept.service';
+
 
 @NgModule({
   declarations: [
@@ -32,11 +32,11 @@ import { LogoutComponent } from './logout/logout.component';
     ProductListComponent,
     CategoriaListComponent,
     ProduttoreListComponent,
-    CreateAccountComponent,
     LoginComponent,
     HeaderComponent,
     FooterComponent,
-    LogoutComponent
+    LogoutComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -44,7 +44,7 @@ import { LogoutComponent } from './logout/logout.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [ {provide: HTTP_INTERCEPTORS, useClass: BasicAuthHtppInterceptorService, multi: true} ],
   bootstrap: [AppComponent]
 
 })
