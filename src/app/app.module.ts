@@ -18,6 +18,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LogoutComponent } from './logout/logout.component';
 import { BasicAuthHtppInterceptorService } from './service/basic-auth-http-intercept.service';
+import { AccountComponent } from './account/account.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { BasicAuthHtppInterceptorService } from './service/basic-auth-http-inter
     HeaderComponent,
     FooterComponent,
     LogoutComponent,
+    AccountComponent,
 
   ],
   imports: [
