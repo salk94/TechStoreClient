@@ -4,13 +4,16 @@ import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
+
 })
 export class ProductService {
 
   private baseUrl = 'http://localhost:8080/products';
+  private baseUrl1 = 'http://localhost:8080/ok';
 
-  username=sessionStorage.getItem('username');
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+
+    ) { }
 
   getProduct(id: number): Observable<any> {
 
@@ -18,10 +21,10 @@ export class ProductService {
   }
 
 
-  getProductByUsername(username): Observable<any> {
+  getProductByUsername(username: string): Observable<any> {
 
 
-    return this.http.get(`${this.baseUrl}/${username}`);
+    return this.http.get(`${this.baseUrl1}/${username}`);
   }
 
 
