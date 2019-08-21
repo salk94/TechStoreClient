@@ -16,11 +16,15 @@ submitted = false;
 constructor(private productService: ProductService, private router: Router) { }
 
   ngOnInit() {
+
+ this.product.accounta= sessionStorage.getItem('username') ;
+
   }
 
   newProduct(): void{
     this.submitted = false;
     this.product = new Product();
+
 
   }
 

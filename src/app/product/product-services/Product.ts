@@ -7,5 +7,6 @@ export class Product {
   nota: string;
   categoria: number;
   produttore: number;
+  accounta: string;
   active: boolean;
 }

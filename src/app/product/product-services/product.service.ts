@@ -9,12 +9,22 @@ export class ProductService {
 
   private baseUrl = 'http://localhost:8080/products';
 
+  username=sessionStorage.getItem('username');
   constructor(private http: HttpClient) { }
 
   getProduct(id: number): Observable<any> {
 
     return this.http.get(`${this.baseUrl}/${id}`);
   }
+
+
+  getProductByUsername(username): Observable<any> {
+
+
+    return this.http.get(`${this.baseUrl}/${username}`);
+  }
+
+
 
   createProduct(product: Object): Observable<Object> {
 

@@ -1,3 +1,4 @@
+import { User } from './../../service/Authentication.service';
 import { Product } from '../product-services/Product';
 import { ProductService } from '../product-services/product.service';
 import { Observable } from 'rxjs';
@@ -14,14 +15,16 @@ export class ProductListComponent implements OnInit {
   products: Observable<Product[]>;
 
   constructor(private productService: ProductService,
-              private router: Router) {}
+              private router: Router
+              ) {}
 
   ngOnInit() {
+
     this.reloadData();
   }
 
   reloadData() {
-    this.products = this.productService.getProductList();
+    this.products = this.productService.getProductByUsername(sessionStorage.getItem('username'));
   }
 
   deleteProduct(id: number) {
@@ -37,4 +40,9 @@ export class ProductListComponent implements OnInit {
   productDetails(id: number){
     this.router.navigate(['/list']);
   }
+
+
+
+
+
 }

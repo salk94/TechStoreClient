@@ -26,7 +26,7 @@ export class AuthenticationService {
     return this.httpClient.get<User>('http://localhost:8080/validateLogin', { headers }).pipe(
       map(
         userData => {
-          sessionStorage.setItem('username', username);this.account
+          sessionStorage.setItem('username', username);
           let authString = 'Basic ' + btoa(username + ':' + password);
           sessionStorage.setItem('basicauth', authString);
           return userData;
@@ -34,6 +34,8 @@ export class AuthenticationService {
       )
 
     );
+
+
   }
 
   isUserLoggedIn() {
