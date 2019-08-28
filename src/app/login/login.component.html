@@ -1,9 +1,62 @@
-<div class="container">
-  <div>
-    User Name : <input type="text" name="username" [(ngModel)]="username">
-    Password : <input type="password" name="password" [(ngModel)]="password">
+
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-xl-5 col-lg-6 col-md-10 col-sm-12 mx-auto">
+
+
+        <!-- Rotating card -->
+        <div class="card-wrapper">
+          <div id="my-card" class="card card-rotating text-center">
+
+            <!-- Front Side -->
+            <div class="face front">
+              <div class="card-body">
+
+                <!-- Header -->
+                <div class="form-header dark grey darken-3">
+                  <h1 class="font-weight-500 my-2 py-1"> Log-in</h1>
+                </div>
+
+                <!-- Login Form -->
+                <div class="md-form">
+                  <i class="fas fa-user prefix grey-text d-flex"></i>
+                  <input type="text" class="form-control" id="form6" required [(ngModel)]="username" name="name" mdbInput>
+                  <label for="form6">Inserisci la tua username</label>
+                  
+                </div>
+
+                <div class="md-form">
+                  <i class="fas fa-lock prefix grey-text d-flex"></i>
+                  <input type="password" class="form-control" id="form7" required [(ngModel)]="password" name="name" mdbInput>
+                  <label for="form7">Inserisci la tua password</label>
+                </div>
+
+
+                <div class="text-center">
+                  <button class="relative waves-light"  type="button" mdbBtn color="elegant" (click)=checkLogin() >Accedi <i class="fas fa-sign-in-alt ml-1"></i></button>
+                </div>
+                <!-- Login Form -->
+
+              </div>
+            </div>
+            <!-- Front Side -->
+
+            <!-- Back Side -->
+            <div class="face back">
+              <div class="card-body">
+
+
+
+              </div>
+            </div>
+            <!-- Back Side -->
+
+          </div>
+        </div>
+        <!-- Rotating card -->
+
+
+      </div>
+    </div>
   </div>
-  <button (click)=checkLogin() class="btn btn-success">
-    Login
-  </button>
-</div>
+

@@ -1,15 +1,55 @@
-<header>
-  <nav class ="navbar navbar-expand-md navbar-dark bg-dark">
-  <div><h1 class="navbar-brand">TechStore</h1></div>
+<!--Navbar -->
+<nav class="mb-1 navbar navbar-expand-lg navbar-dark grey darken-3">
+ <div class="animated bounce infinite"> <h1 class="navbar-brand"  href="#">TECHSTORE</h1></div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
+    aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link"routerLink="/home" >Home  <mdb-icon fas icon="home"></mdb-icon>
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
 
-  <ul class="navbar-nav">
-    <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/add" class="nav-link">Aggiungi prodotto</a></li>
-    <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/list" class="nav-link">Vedi tutti i prodottia</a></li>
-    <li><a *ngIf="!loginService.isUserLoggedIn()" routerLink="/login" class="nav-link">Login</a></li>
-    <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" class="nav-link">LogOut</a></li>
-    <li><a *ngIf="!loginService.isUserLoggedIn()" routerLink="/registrazione" class="nav-link">Registrati</a></li>
-  </ul>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/magazzini" *ngIf="loginService.isUserLoggedIn()">I tuoi magazzini  <mdb-icon fas icon="warehouse"></mdb-icon></a>
+      </li>
 
-  </nav>
+    </ul>
+    <ul class="navbar-nav ml-auto nav-flex-icons">
 
-  </header>
+
+
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login">Chi siamo
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login">Cos'è TechStore
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login" *ngIf="!loginService.isUserLoggedIn()">Log-in   <i class="fas fa-user"></i>
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+              <a class="nav-link" routerLink="/logout" *ngIf="loginService.isUserLoggedIn()">Log-out
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+
+
+
+    </ul>
+  </div>
+</nav>
+<!--/.Navbar -->
+

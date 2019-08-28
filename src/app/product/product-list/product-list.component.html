@@ -1,32 +1,33 @@
 <div class="panel panel-primary">
-  <div class="panel-heading">
-    <h2>Product List</h2>
+    <div class="panel-heading">
+      <h2>Product List</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+
+
+
+          <tr>
+            <th>Nome</th>
+            <th>quantità</th>
+            <th>prezzo</th>
+            <th></th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products | async">
+            <td>{{product.name}}</td>
+            <td>{{product.quantity}}</td>
+            <td>{{product.prezzo}}</td>
+
+            <td><button (click)="deleteProduct(product.id)" class="btn btn-danger">Delete</button>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-  <div class="panel-body">
-    <table class="table table-striped">
-      <thead>
 
-
-
-        <tr>
-          <th>Nome</th>
-          <th>quantità</th>
-          <th>prezzo</th>
-          <th></th>
-
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let product of products | async">
-          <td>{{product.name}}</td>
-          <td>{{product.quantity}}</td>
-          <td>{{product.prezzo}}</td>
-
-          <td><button (click)="deleteProduct(product.id)" class="btn btn-danger">Delete</button>
-
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>

@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from './../service/Authentication.service';
 import { Router } from '@angular/router';
-import { AuthenticationService } from '../service/authentication.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
 
@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   checkLogin() {
     this.loginservice.authenticate(this.username, this.password)
     .subscribe( data => {
-        this.router.navigate(['/list']);
+        this.router.navigate(['home']);
         this.invalidLogin = false;
       },
       error => {

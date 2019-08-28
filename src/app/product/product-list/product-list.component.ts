@@ -1,4 +1,3 @@
-import { User } from './../../service/Authentication.service';
 import { Product } from '../product-services/Product';
 import { ProductService } from '../product-services/product.service';
 import { Observable } from 'rxjs';
@@ -8,7 +7,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css']
+  styleUrls: ['./product-list.component.scss']
 })
 
 export class ProductListComponent implements OnInit {

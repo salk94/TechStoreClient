@@ -1,53 +1,40 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { CreateProductComponent } from './product/create-product/create-product.component';
-import { CreateCategoriaComponent } from './categoria/create-categoria/create-categoria.component';
-import { CreateProduttoreComponent } from './produttore/create-produttore/create-produttore.component';
-import { ProductDetailsComponent } from './product/product-details/product-details.component';
-import { CategoriaDetailsComponent } from './categoria/categoria-details/categoria-details.component';
-import { ProduttoreDetailsComponent } from './produttore/produttore-details/produttore-details.component';
-import { ProductListComponent } from './product/product-list/product-list.component';
-import { FormsModule } from '@angular/forms';
-import { CategoriaListComponent } from './categoria/categoria-list/categoria-list.component';
-import { ProduttoreListComponent } from './produttore/produttore-list/produttore-list.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { LoginComponent } from './login/login.component';
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { BasicAuthHtppInterceptorService } from './service/basic-auth-http-intercept.service';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { LoginComponent } from './login/login.component';
+import { ProductListComponent } from './product/product-list/product-list.component';
 import { LogoutComponent } from './logout/logout.component';
-import { BasicAuthHtppInterceptorService } from './service/basic-auth-http-intercept.service';
-import { AccountComponent } from './account/account.component';
-
+import { HomeComponent } from './home/home.component';
+import { MagazziniComponent } from './magazzini/magazzini.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CreateProductComponent,
-    CreateCategoriaComponent,
-    CreateProduttoreComponent,
-    ProductDetailsComponent,
-    CategoriaDetailsComponent,
-    ProduttoreDetailsComponent,
-    ProductListComponent,
-    CategoriaListComponent,
-    ProduttoreListComponent,
-    LoginComponent,
     HeaderComponent,
     FooterComponent,
+    LoginComponent,
+    ProductListComponent,
     LogoutComponent,
-    AccountComponent,
-
+    HomeComponent,
+    MagazziniComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    MDBBootstrapModule.forRoot(),
     FormsModule,
     HttpClientModule
   ],
   providers: [ {provide: HTTP_INTERCEPTORS, useClass: BasicAuthHtppInterceptorService, multi: true} ],
   bootstrap: [AppComponent]
-
 })
 export class AppModule { }

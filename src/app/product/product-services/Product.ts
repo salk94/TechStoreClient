@@ -5,8 +5,6 @@ export class Product {
   prezzo: number;
   codiceBarre: number;
   nota: string;
-  categoria: number;
-  produttore: number;
-  accounta: string;
+  magazzino: string;
   active: boolean;
 }
