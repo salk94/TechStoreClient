@@ -27,6 +27,7 @@ constructor(private magazziniService: MagazziniService, private router: Router) 
   onSubmit(){
 
        this.submitted = true;
+
        this.magazziniService.createMagazzino(this.magazzino)
          .subscribe(data => console.log(data), error => console.log(error));
        this.magazzino = new Magazzino();
@@ -48,7 +49,8 @@ constructor(private magazziniService: MagazziniService, private router: Router) 
           },
           error => console.log(error));
     }
-
-
+    MagazzinoDetail(id: number){
+      this.router.navigate(['list', id]);
+    }
 
   }

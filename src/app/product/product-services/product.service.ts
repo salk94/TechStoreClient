@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class ProductService {
 
   private baseUrl = 'http://localhost:8080/products';
-  private baseUrl1 = 'http://localhost:8080/ok';
+  private baseUrl1 = 'http://localhost:8080/salve';
 
   constructor(private http: HttpClient,
 
@@ -21,10 +21,10 @@ export class ProductService {
   }
 
 
-  getProductByUsername(username: string): Observable<any> {
+  getProductByMagazzino(magazzino: number): Observable<any> {
 
 
-    return this.http.get(`${this.baseUrl1}/${username}`);
+    return this.http.get(`${this.baseUrl1}/${magazzino}`);
   }
 
 

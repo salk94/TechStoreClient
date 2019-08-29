@@ -10,7 +10,7 @@
         <h4 class="modal-title w-100" id="myModalLabel">Nuovo Magazzino</h4>
       </div>
       <div class="md-form">
-        
+
         <mdb-icon fas icon="warehouse" aria-hidden="true"></mdb-icon>
           <input type="text" class="form-control" id="form6" required [(ngModel)]="magazzino.name" name="name" mdbInput>
           <label for="form6">Inserisci il nome del magazzino</label>
@@ -29,15 +29,16 @@
 <div>
 
 <div class="list-group" style="width: 500px">
-  
+
   <h2 class="list-group-item active dark grey darken-3"  mdbWavesEffect>
      I tuoi Magazzini </h2>
      <div class="list-group-item list-group-item-action waves-light" *ngFor= "let magazzino of magazzini | async">
   <h3 class ="text-center">{{magazzino.name}}</h3>
   <div id="buttoncontainer">
-<button  class =" center" type = "button" mdbBtn color="elegant" mdbWavesEffect>Gestisci Magazzino</button>
-     </div>
+<button  class =" center"  (click)=MagazzinoDetail(magazzino.id)  type = "button" mdbBtn color="elegant" mdbWavesEffect>Gestisci Magazzino</button>
+<button (click)="deleteMagazzino(magazzino.id)" class="center"mdbBtn color="elegant" mdbWavesEffect>Delete</button>
+</div>
     </div>
-  <button type="button" mdbBtn color="elegant" class="relative waves-light" (click)="basicModal.show()" >Crea Nuovo Magazzino</button>
+  <button type="button" mdbBtn color="elegant" class="relative waves-light" (click)="basicModal.show()"  >Crea Nuovo Magazzino</button>
 </div>
 </div>

@@ -1,8 +1,9 @@
+import { Magazzino } from './../../magazzini/magazzino';
 import { Product } from '../product-services/Product';
 import { ProductService } from '../product-services/product.service';
 import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -12,18 +13,34 @@ import { Router } from '@angular/router';
 
 export class ProductListComponent implements OnInit {
   products: Observable<Product[]>;
+  product: Product = new Product();
 
-  constructor(private productService: ProductService,
+  idm: number;
+  submitted = false;
+
+
+  constructor(private route: ActivatedRoute, private productService: ProductService,
               private router: Router
               ) {}
 
   ngOnInit() {
-
+    this.idm = this.route.snapshot.params['id'];
     this.reloadData();
   }
 
+  createProduct(){
+
+    this.submitted = true;
+    this.product.magazzino = this.idm;
+    this.productService.createProduct(this.product)
+      .subscribe(data => console.log(data), error => console.log(error));
+
+      this.product = new Product();
+
+ }
+
   reloadData() {
-    this.products = this.productService.getProductByUsername(sessionStorage.getItem('username'));
+    this.products = this.productService.getProductByMagazzino(this.idm);
   }
 
   deleteProduct(id: number) {
@@ -41,7 +58,10 @@ export class ProductListComponent implements OnInit {
   }
 
 
-
-
-
 }
+
+
+
+
+
+

@@ -17,7 +17,7 @@ import { ProductListComponent } from './product/product-list/product-list.compon
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'logout', component: LogoutComponent,canActivate:[AuthGaurdService]},
-  { path: 'list', component: ProductListComponent,canActivate:[AuthGaurdService]},
+  { path: 'list/:id', component: ProductListComponent,canActivate:[AuthGaurdService]},
   { path: 'home', component: HomeComponent},
   { path: 'magazzini', component: MagazziniComponent}
 ];

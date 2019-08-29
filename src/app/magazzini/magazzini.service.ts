@@ -10,7 +10,7 @@ export class MagazziniService
  {
 
   private baseUrl = 'http://localhost:8080/magazzino';
-  private baseUrl1 = 'http://localhost:8080/salve';
+  private baseUrl1 = 'http://localhost:8080/magazzini';
 
   constructor(private http: HttpClient,
 

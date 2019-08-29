@@ -5,6 +5,7 @@ export class Product {
   prezzo: number;
   codiceBarre: number;
   nota: string;
-  magazzino: string;
+  mag_id: number;
+  magazzino: number;
   active: boolean;
 }
