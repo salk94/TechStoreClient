@@ -14,7 +14,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class ProductListComponent implements OnInit {
   products: Observable<Product[]>;
   product: Product = new Product();
-
+  newProduct: Product = new Product();
   idm: number;
   submitted = false;
 
@@ -36,7 +36,7 @@ export class ProductListComponent implements OnInit {
       .subscribe(data => console.log(data), error => console.log(error));
 
       this.product = new Product();
-
+      this.reloadData();
  }
 
   reloadData() {
@@ -53,12 +53,36 @@ export class ProductListComponent implements OnInit {
         error => console.log(error));
   }
 
+
+updateProduct(id:number){
+  this.submitted = true;
+  this.productService.updateProduct(id, this.newProduct)
+  .subscribe(
+    data => {
+      console.log(data);
+
+    },
+    error => console.log(error));
+    this.newProduct = new Product();
+    this.reloadData();
+}
+
+
+
+
+
+
   productDetails(id: number){
     this.router.navigate(['/list']);
   }
 
 
 }
+
+
+
+
+
 
 
 
