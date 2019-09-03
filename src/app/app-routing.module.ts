@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'logout', component: LogoutComponent,canActivate:[AuthGaurdService]},
   { path: 'list/:id', component: ProductListComponent,canActivate:[AuthGaurdService]},
-  { path: 'home', component: HomeComponent},
+  { path: '', component: HomeComponent},
   { path: 'magazzini', component: MagazziniComponent}
 ];
 

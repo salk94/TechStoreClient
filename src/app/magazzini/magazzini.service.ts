@@ -49,4 +49,8 @@ export class MagazziniService
 
     return this.http.get(`${this.baseUrl}`);
   }
+
+
+
+
 }

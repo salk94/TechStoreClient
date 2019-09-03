@@ -1,3 +1,4 @@
+import { MagazziniService } from './../../magazzini/magazzini.service';
 import { Magazzino } from './../../magazzini/magazzino';
 import { Product } from '../product-services/Product';
 import { ProductService } from '../product-services/product.service';
@@ -14,19 +15,25 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class ProductListComponent implements OnInit {
   products: Observable<Product[]>;
   product: Product = new Product();
+  magazzino: Magazzino = new Magazzino();
   newProduct: Product = new Product();
-  idm: number;
   submitted = false;
+  idm: number;
+  edit = false;
+  magazzini: Observable<Magazzino[]>;
 
 
   constructor(private route: ActivatedRoute, private productService: ProductService,
-              private router: Router
+              private router: Router, private magazziniService: MagazziniService
               ) {}
 
   ngOnInit() {
     this.idm = this.route.snapshot.params['id'];
     this.reloadData();
+
   }
+
+
 
   createProduct(){
 
@@ -34,7 +41,6 @@ export class ProductListComponent implements OnInit {
     this.product.magazzino = this.idm;
     this.productService.createProduct(this.product)
       .subscribe(data => console.log(data), error => console.log(error));
-
       this.product = new Product();
       this.reloadData();
  }
@@ -54,20 +60,26 @@ export class ProductListComponent implements OnInit {
   }
 
 
-updateProduct(id:number){
-  this.submitted = true;
+editProduct(id:number){
+  this.edit = true;
   this.productService.updateProduct(id, this.newProduct)
   .subscribe(
     data => {
       console.log(data);
+      this.reloadData();
 
     },
     error => console.log(error));
-    this.newProduct = new Product();
-    this.reloadData();
+
+
 }
 
+updateMagazzino(){
 
+
+
+
+}
 
 
 

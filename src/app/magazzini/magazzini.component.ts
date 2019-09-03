@@ -13,7 +13,9 @@ import { Observable } from 'rxjs';
 export class MagazziniComponent implements OnInit {
 
   magazzino: Magazzino = new Magazzino();
+  newMagazzino: Magazzino = new Magazzino();
   submitted = false;
+  edit = false;
   magazzini: Observable<Magazzino[]>;
 constructor(private magazziniService: MagazziniService, private router: Router) { }
 
@@ -52,5 +54,22 @@ constructor(private magazziniService: MagazziniService, private router: Router) 
     MagazzinoDetail(id: number){
       this.router.navigate(['list', id]);
     }
+
+
+    editMagazzino(id:number){
+      this.edit = true;
+      this.magazziniService.updateMagazzino(id, this.newMagazzino)
+      .subscribe(
+        data => {
+          console.log(data);
+          this.reloadData();
+
+        },
+        error => console.log(error));
+
+
+    }
+
+
 
   }
