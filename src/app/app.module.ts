@@ -29,6 +29,8 @@ import { MagazziniComponent } from './magazzini/magazzini.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+
     BrowserAnimationsModule,
     MDBBootstrapModule.forRoot(),
     FormsModule,
