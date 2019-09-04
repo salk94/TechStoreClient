@@ -10,7 +10,7 @@ export class ProductService {
 
   private baseUrl = 'http://localhost:8080/products';
   private baseUrl1 = 'http://localhost:8080/salve';
-
+  private baseUrl2 = 'http://localhost:8080/ciao';
   constructor(private http: HttpClient,
 
     ) { }
@@ -26,7 +26,10 @@ export class ProductService {
 
     return this.http.get(`${this.baseUrl1}/${magazzino}`);
   }
+  deleteProductByMagazzino(magazzino: number): Observable<any> {
 
+    return this.http.delete(`${this.baseUrl2}/${magazzino}`, { responseType: 'text' });
+  }
 
 
   createProduct(product: Object): Observable<Object> {
