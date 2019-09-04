@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { ProductService } from '../product/product-services/product.service';
 
 @Component({
   selector: 'app-magazzini',
@@ -17,7 +18,8 @@ export class MagazziniComponent implements OnInit {
   submitted = false;
   edit = false;
   magazzini: Observable<Magazzino[]>;
-constructor(private magazziniService: MagazziniService, private router: Router) { }
+
+constructor(private magazziniService: MagazziniService, private router: Router, private productService: ProductService) { }
 
   ngOnInit() {
 
@@ -42,6 +44,8 @@ constructor(private magazziniService: MagazziniService, private router: Router) 
       this.magazzini = this.magazziniService.getMagazzinoByUsername(sessionStorage.getItem('username'));
     }
 
+
+
     deleteMagazzino(id: number) {
       this.magazziniService.deleteMagazzino(id)
         .subscribe(
@@ -50,7 +54,9 @@ constructor(private magazziniService: MagazziniService, private router: Router) 
             this.reloadData();
           },
           error => console.log(error));
+
     }
+
     MagazzinoDetail(id: number){
       this.router.navigate(['list', id]);
     }
