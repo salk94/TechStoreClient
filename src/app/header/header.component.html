@@ -1,20 +1,18 @@
 <!--Navbar -->
-<nav class="mb-1 navbar navbar-expand-lg navbar-dark grey darken-3">
- <div class="animated bounce infinite"> <h1 class="navbar-brand"  href="#">TECHSTORE</h1></div>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
-    aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark grey darken-3">
+  <mdb-navbar-brand> <a class="navbar-brand waves-light mdbWavesEffect"  routerLink =""> TECHSTORE</a></mdb-navbar-brand>
+
+  <links>
+
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link"routerLink="" >Home  <mdb-icon fas icon="home"></mdb-icon>
+      <li class="nav-item">
+        <a class="nav-link  waves-light mdbWavesEffect" routerLink="" >Home  <mdb-icon fas icon="home"></mdb-icon>
           <span class="sr-only">(current)</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" routerLink="/magazzini" *ngIf="loginService.isUserLoggedIn()">I tuoi magazzini  <mdb-icon fas icon="warehouse"></mdb-icon></a>
+        <a class="nav-link waves-light mdbWavesEffect" routerLink="/magazzini" *ngIf="loginService.isUserLoggedIn()">I tuoi magazzini  <mdb-icon fas icon="warehouse"></mdb-icon></a>
       </li>
 
     </ul>
@@ -22,26 +20,26 @@
 
 
 
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/login">Chi siamo
+          <li class="nav-item ">
+            <a class="nav-link nav-link waves-light mdbWavesEffect" routerLink="/login">Chi siamo
               <span class="sr-only">(current)</span>
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" routerLink="/login">Cos'è TechStore
+            <a class="nav-link nav-link waves-light mdbWavesEffect" routerLink="/login">Cos'è TechStore
               <span class="sr-only">(current)</span>
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" routerLink="/login" *ngIf="!loginService.isUserLoggedIn()">Log-in   <i class="fas fa-user"></i>
+            <a class="nav-link nav-link waves-light mdbWavesEffect" routerLink="/login" *ngIf="!loginService.isUserLoggedIn()">Log-in   <i class="fas fa-user"></i>
               <span class="sr-only">(current)</span>
             </a>
           </li>
 
           <li class="nav-item">
-              <a class="nav-link" routerLink="/logout" *ngIf="loginService.isUserLoggedIn()">Log-out
+              <a class="nav-link nav-link waves-light mdbWavesEffect" routerLink="/logout" *ngIf="loginService.isUserLoggedIn()">Log-out
                 <span class="sr-only">(current)</span>
               </a>
             </li>
@@ -49,7 +47,8 @@
 
 
     </ul>
-  </div>
-</nav>
+  </links>
+
+</mdb-navbar>
 <!--/.Navbar -->
 
