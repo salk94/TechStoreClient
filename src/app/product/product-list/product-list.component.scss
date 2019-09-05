@@ -6,3 +6,11 @@ span{
 
     color:white
 }
+
+input, select, textarea{
+  color: white;
+}
+
+textarea:focus, input:focus {
+  color: white;
+}

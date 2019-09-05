@@ -15,6 +15,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { HomeComponent } from './home/home.component';
 import { MagazziniComponent } from './magazzini/magazzini.component';
 
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,12 +25,14 @@ import { MagazziniComponent } from './magazzini/magazzini.component';
     ProductListComponent,
     LogoutComponent,
     HomeComponent,
-    MagazziniComponent
+    MagazziniComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    Ng2SearchPipeModule,
 
     BrowserAnimationsModule,
     MDBBootstrapModule.forRoot(),

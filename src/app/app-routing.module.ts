@@ -14,6 +14,7 @@ import { ProductListComponent } from './product/product-list/product-list.compon
 
 
 
+
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'logout', component: LogoutComponent,canActivate:[AuthGaurdService]},

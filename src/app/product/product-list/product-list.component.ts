@@ -21,7 +21,7 @@ export class ProductListComponent implements OnInit {
   idm: number;
   edit = false;
   magazzini: Observable<Magazzino[]>;
-
+  searchText : string;
 
   constructor(private route: ActivatedRoute, private productService: ProductService,
               private router: Router, private magazziniService: MagazziniService

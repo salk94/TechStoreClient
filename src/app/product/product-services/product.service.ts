@@ -24,7 +24,8 @@ export class ProductService {
   getProductByMagazzino(magazzino: number): Observable<any> {
 
 
-    return this.http.get(`${this.baseUrl1}/${magazzino}`);
+     return this.http.get(`${this.baseUrl1}/${magazzino}`);
+
   }
   deleteProductByMagazzino(magazzino: number): Observable<any> {
 
