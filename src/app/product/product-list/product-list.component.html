@@ -42,6 +42,14 @@
         <label for="form6">Inserisci eventuale nota</label>
 
       </div>
+      <div class="md-form">
+
+        <input type="text" class="form-control text-center" id="form6" required [(ngModel)]="product.minQuantity" name="minQuantity" mdbInput>
+        <label for="form6">Inserisci quantity di controllo
+        </label>
+
+      </div>
+
 
 
 
@@ -83,11 +91,11 @@ Magazzino
 
               <tr>
                 <th>Nome</th>
-                <th>quantità</th>
-                <th>prezzo</th>
+                <th>Quantità</th>
+                <th>Prezzo</th>
                 <th>Codice a barre</th>
                 <th>Nota</th>
-
+                <th>Stato</th>
               </tr>
             </thead>
             <tbody>
@@ -98,6 +106,9 @@ Magazzino
                 <td>{{product.codiceBarre}}</td>
                 <td>{{product.nota}}</td>
 
+
+               <td><mdb-icon *ngIf="product.quantity>product.minQuantity else: elseBlock" class="green-text pr-3" fas icon="battery-full"></mdb-icon></td>
+               <ng-template #elseBlock><mdb-icon class="amber-text pr-3" fas icon="battery-quarter"></mdb-icon></ng-template>
                 <td><button (click)="deleteProduct(product.id)" class="btn btn-danger"><mdb-icon far icon="trash-alt"></mdb-icon></button>
                 <td><button type="submit" mdbBtn color="elegant" class="relative waves-light" (click)="updateModal.show(product.id)">Modifica Prodotto</button>
 

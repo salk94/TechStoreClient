@@ -22,6 +22,8 @@ export class ProductListComponent implements OnInit {
   edit = false;
   magazzini: Observable<Magazzino[]>;
   searchText : string;
+  quantita : boolean;
+
 
   constructor(private route: ActivatedRoute, private productService: ProductService,
               private router: Router, private magazziniService: MagazziniService
@@ -30,6 +32,8 @@ export class ProductListComponent implements OnInit {
   ngOnInit() {
     this.idm = this.route.snapshot.params['id'];
     this.reloadData();
+    this.quantita = true;
+
 
   }
 
@@ -78,6 +82,14 @@ updateMagazzino(){
 
 
 
+
+}
+
+batteria(){
+
+if(this.product.minQuantity>this.product.quantity)
+  return true;
+  else return false;
 
 }
 

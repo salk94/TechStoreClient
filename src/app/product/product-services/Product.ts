@@ -7,5 +7,7 @@ export class Product {
   nota: string;
   mag_id: number;
   magazzino: number;
+  minQuantity: number;
   active: boolean;
+
 }
