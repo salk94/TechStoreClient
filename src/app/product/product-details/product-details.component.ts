@@ -1,3 +1,4 @@
+import { Magazzino } from './../../magazzini/magazzino';
 import { Product } from './../product-services/Product';
 import { Component, OnInit } from '@angular/core';
 
@@ -45,6 +46,10 @@ edit = false;
   }
   reloadData() {
     this.products = this.productService.getProduct(this.idP);
+  }
+
+  MagazzinoDetail(){
+    this.router.navigate(['list', this.product.magazzino]);
   }
 
 }
