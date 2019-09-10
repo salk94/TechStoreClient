@@ -71,8 +71,8 @@
 <br>
 <div class="list-group" >
 
-  <h2 class="list-group-item active dark grey darken-3"  mdbWavesEffect>
-Magazzino
+  <h2 class="list-group-item active dark grey darken-3"  *ngIf="magazzino" mdbWavesEffect>{{magazzino.name}}
+
      <button type="button" mdbBtn color="elegant" class="relative waves-light" (click)="basicModal.show()">Aggiungi Prodotto</button>
      <div class="md-form">
       <input mdbInput type="text" id="form1" class="form-control" name="search" [(ngModel)]="searchText">
@@ -83,8 +83,10 @@ Magazzino
 <div>
 
 
-     <div class="list-group-item list-group-item-action waves-light">
-        <table class="table table-striped">
+
+     <div class="list-group-item list-group-item-action waves-light  bordered-cyan">
+
+      <table class="table table-striped">
             <thead>
 
 
@@ -99,7 +101,7 @@ Magazzino
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let product of products | async   | filter:searchText">
+              <tr *ngFor="let product of products | async | filter:searchText">
                 <td>{{product.name}}</td>
                 <td>{{product.quantity}}</td>
                 <td>{{product.prezzo}}</td>
@@ -110,67 +112,13 @@ Magazzino
                <td><mdb-icon *ngIf="product.quantity>product.minQuantity else: elseBlock" class="green-text pr-3" fas icon="battery-full"></mdb-icon></td>
                <ng-template #elseBlock><mdb-icon class="amber-text pr-3" fas icon="battery-quarter"></mdb-icon></ng-template>
                 <td><button (click)="deleteProduct(product.id)" class="btn btn-danger"><mdb-icon far icon="trash-alt"></mdb-icon></button>
-                <td><button type="submit" mdbBtn color="elegant" class="relative waves-light" (click)="updateModal.show(product.id)">Modifica Prodotto</button>
+                <td><button type="submit" mdbBtn color="elegant" class="relative waves-light" (click)=ProductDetails(product.id)><mdb-icon fas icon="wrench"></mdb-icon></button>
 
 
 
 
 
-          <div mdbModal #updateModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myUpdateModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header-dark grey darken-3">
-                  <button type="button" class="close pull-right" aria-label="Close" (click)="updateModal.hide()">
-                    <span aria-hidden="true">×</span>
-                  </button>
-                  <br>
-                  <h4 class="modal-title w-200 text-center" id="myupdateModalLabel">Modifica prodotto</h4>
-<br>
-                </div>
-                <div class="md-form">
 
-                  <input placeholder={{product.name}} type="text" class="form-control text-center" id="form6" required [(ngModel)]="newProduct.name" name="name"  mdbInput>
-                  <label class="" for="form6">nome</label>
-
-                </div>
-
-                <div class="md-form">
-
-                  <input placeholder={{product.quantity}} type="text" class="form-control text-center" id="form6" required [(ngModel)]="newProduct.quantity" name="quantity" mdbInput>
-                  <label for="form6">Quantità</label>
-
-                </div>
-                <div class="md-form">
-
-                  <input placeholder={{product.prezzo}} type="text" class="form-control text-center" id="form6" required [(ngModel)]="newProduct.prezzo" name="prezzo" mdbInput>
-                  <label for="form6">Prezzo</label>
-
-                </div>
-
-                <div class="md-form">
-
-                  <input placeholder={{product.nota}} type="text" class="form-control text-center" id="form6" required [(ngModel)]="newProduct.nota" name="nota" mdbInput>
-                  <label for="form6">Nota</label>
-
-                </div>
-
-                <div class="md-form">
-
-                  <input placeholder={{product.codiceBarre}} type="text" class="form-control text-center" id="form6" required [(ngModel)]="newProduct.codiceBarre" name="codiceBarre" mdbInput>
-                  <label for="form6">Codice a barre</label>
-
-                </div>
-
-
-
-                  <button type="button" mdbBtn color="elegant" class="waves-light text-center" aria-label="Close" (click)="updateModal.hide()" mdbWavesEffect>Chiudi</button>
-                  <button type="submit" (click)=editProduct(product.id)  class="waves-light text-center" mdbBtn color="elegant" >Salva</button>
-
-                </div>
-            </div>
-
-
-          </div>
 
         </td>
       </tr>
@@ -183,3 +131,5 @@ Magazzino
 </div>
 
 
+</div>
+</div>

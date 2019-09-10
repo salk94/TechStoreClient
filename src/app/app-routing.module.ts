@@ -10,6 +10,7 @@ import { AuthGaurdService } from './service/auth-gaurd.service';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProductListComponent } from './product/product-list/product-list.component';
+import { ProductDetailsComponent } from './product/product-details/product-details.component';
 
 
 
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'logout', component: LogoutComponent,canActivate:[AuthGaurdService]},
   { path: 'list/:id', component: ProductListComponent,canActivate:[AuthGaurdService]},
   { path: '', component: HomeComponent},
-  { path: 'magazzini', component: MagazziniComponent}
+  { path: 'magazzini', component: MagazziniComponent},
+  { path: 'product/:idP', component: ProductDetailsComponent,canActivate:[AuthGaurdService]},
 ];
 
 

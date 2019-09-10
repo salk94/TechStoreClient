@@ -26,16 +26,25 @@ export class ProductListComponent implements OnInit {
 
 
   constructor(private route: ActivatedRoute, private productService: ProductService,
-              private router: Router, private magazziniService: MagazziniService
+              private router: Router, public magazziniService: MagazziniService
               ) {}
 
   ngOnInit() {
+    this.magazzino = new Magazzino();
     this.idm = this.route.snapshot.params['id'];
+    this.magazziniService.getMagazzino(this.idm)
+    .subscribe(data => {
+      console.log(data)
+      this.magazzino = data;
+    }, error => console.log(error));
     this.reloadData();
     this.quantita = true;
+}
 
 
-  }
+
+
+
 
 
 
@@ -50,7 +59,11 @@ export class ProductListComponent implements OnInit {
  }
 
   reloadData() {
+
+
     this.products = this.productService.getProductByMagazzino(this.idm);
+
+
   }
 
   deleteProduct(id: number) {
@@ -78,20 +91,11 @@ editProduct(id:number){
 
 }
 
-updateMagazzino(){
-
-
-
-
+ProductDetails(id: number){
+  this.router.navigate(['/product', id]);
 }
 
-batteria(){
 
-if(this.product.minQuantity>this.product.quantity)
-  return true;
-  else return false;
-
-}
 
 
 

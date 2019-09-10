@@ -16,6 +16,7 @@ import { HomeComponent } from './home/home.component';
 import { MagazziniComponent } from './magazzini/magazzini.component';
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { ProductDetailsComponent } from './product/product-details/product-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     LogoutComponent,
     HomeComponent,
     MagazziniComponent,
-    
+    ProductDetailsComponent,
+
   ],
   imports: [
     BrowserModule,
