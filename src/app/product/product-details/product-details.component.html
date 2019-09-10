@@ -13,46 +13,44 @@
 
   <!-- Table body -->
   <tbody>
-    <tr *ngIf=product>
+    <tr *ngIf="product">
       <td ><h5>Nome:</h5></td>
 
       <div class="md-form"><td>
-        <input type="text" class="form-control text-center"   [ngModel]="newProduct.name" name="name" value="{{product.name}}">
-          </td></div>
-          <td ><h5>Quantità:</h5></td>
-
-          <div class="md-form"><td>
-            <input type="text" class="form-control text-center"   [ngModel]="newProduct.quantity" name="quantity" value="{{product.quantity}}">
-              </td></div>
-
-    <tr >
-        <td ><h5>Prezzo:</h5></td>
-
-      <div class="md-form"><td>
-        <input type="text" class="form-control text-center"  [ngModel]="newProduct.prezzo" name="prezzo" value="{{product.prezzo}}">
-          </td></div>
-          <td ><h5>Codice a barre:</h5></td>
-
-          <div class="md-form"><td>
-            <input type="text" class="form-control text-center"  [ngModel]="newProduct.codiceBarre" name="codiceBarre" value="{{product.codiceBarre}}">
-              </td></div>
-
-    <tr >
-        <td ><h5>Nota:</h5></td>
+        <input  type="text" class="form-control text-center" value="{{product.name}}" [(ngModel)]="product.name" name="name" >
+        </td>
+        </div>
+        <td ><h5>Quantità</h5></td>
 
         <div class="md-form"><td>
-          <input type="text" class="form-control text-center"   [ngModel]="newProduct.nota"  name="nota" value="{{product.nota}}">
-          
+          <input type="number" class="form-control text-center" value={{product.quantity}}  [(ngModel)]="product.quantity" name="quantity">
+            </td></div>
+            </tr>
+    <tr *ngIf=product>
+        <td ><h5>Prezzo:</h5></td>
+      <div class="md-form"><td>
+        <input type="number" class="form-control text-center" value={{product.prezzo}} [(ngModel)]="product.prezzo" name="prezzo">
+          </td></div>
+          <td ><h5>Codice a barre:</h5></td>
+          <div class="md-form"><td>
+            <input type="text" class="form-control text-center" value={{product.codiceBarre}}  [(ngModel)]="product.codiceBarre" name="codiceBarre">
+              </td></div>
+            </tr>
+    <tr *ngIf=product >
+        <td ><h5>Nota:</h5></td>
+        <div class="md-form"><td>
+          <input type="text" class="form-control text-center"  value={{product.nota}} [(ngModel)]="product.nota" name="nota">
+
             </td></div>
             <td ><h5>Quantità minima:</h5></td>
 
             <div class="md-form"><td>
-              <input type="text" class="form-control text-center"   [ngModel]="newProduct.minQuantity" name="minQuantity" value="{{product.minQuantity}}">
+              <input type="number" class="form-control text-center" value={{product.minQuantity}} [(ngModel)]="product.minQuantity" name="minQuantity">
                 </td></div>
     </tr>
   </tbody>
   <!-- Table body -->
-
+  <button  type="button" mdbBtn color="elegant" class="relative waves-light" (click)="editProduct(product.id)">Aggiungi Prodotto</button>
 </table>
 <!-- Table  -->
-<button  type="button" mdbBtn color="elegant" class="relative waves-light" (click)="editProduct(product.id)">Aggiungi Prodotto</button>
+

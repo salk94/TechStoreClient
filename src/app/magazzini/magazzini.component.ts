@@ -64,7 +64,8 @@ constructor(private magazziniService: MagazziniService, private router: Router, 
 
     editMagazzino(id:number){
       this.edit = true;
-      this.magazziniService.updateMagazzino(id, this.newMagazzino)
+      this.magazzino = this.newMagazzino;
+      this.magazziniService.updateMagazzino(id, this.magazzino)
       .subscribe(
         data => {
           console.log(data);

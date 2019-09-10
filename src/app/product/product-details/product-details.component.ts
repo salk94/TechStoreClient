@@ -12,18 +12,18 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ProductDetailsComponent implements OnInit {
 idP: number;
-product: Product;
+product: Product= new Product();
 products: Observable<Product>;
 edit = false;
-newProduct: Product;
+
   constructor(private route: ActivatedRoute,  public productService: ProductService,
     private router: Router) {
 
      }
 
   ngOnInit() {
-    this.product = new Product();
-    
+
+
     this.idP = this.route.snapshot.params['idP'];
 
     this.productService.getProduct(this.idP)
@@ -33,18 +33,18 @@ newProduct: Product;
       }, error => console.log(error));
   }
 
-  editProduct(id:number){
+  editProduct(idP){
     this.edit = true;
-    this.productService.updateProduct(id, this.newProduct)
+
+    this.productService.updateProduct(idP, this.product)
     .subscribe(
       data => {
         console.log(data);
-        
-
       },
       error => console.log(error));
-
-
-
   }
+  reloadData() {
+    this.products = this.productService.getProduct(this.idP);
+  }
+
 }
