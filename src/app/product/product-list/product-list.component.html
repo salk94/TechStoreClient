@@ -1,5 +1,5 @@
-<div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+<div mdbModal #basicModal="mdbModal"  class="modal fade" id="exampleModalScrollable"  tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
     <div class="modal-content">
       <div class="modal-header-dark grey darken-3">
         <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
@@ -9,29 +9,68 @@
         <h4 class="modal-title w-100 text-center" id="myModalLabel">Nuovo prodotto</h4>
         <br>
       </div>
+     <div  style="float:left">
       <div class="md-form">
 
-        <input type="text" class="form-control text-center" id="form6" required [(ngModel)]="product.name" name="name" mdbInput>
+        <input type="text" class="form-control text-center" id="form6" required [(ngModel)]="product.name" name="name" #name="ngModel"mdbInput>
+
+        <div *ngIf="name.invalid && (name.dirty || name.touched)"
+        class="alert alert-danger">
+
+      <div *ngIf="name.errors.required">
+        Non puoi lasciare il campo nome vuoto
+      </div>
+    </div>
+
+
         <label for="form6">Inserisci il nome del prodotto</label>
 
       </div>
 
       <div class="md-form">
 
-        <input type="text" class="form-control text-center" id="form6" required [(ngModel)]="product.quantity" name="quantity" mdbInput>
+        <input type="text" class="form-control text-center" id="form6" required [(ngModel)]="product.quantity" name="quantity" #quantity="ngModel" mdbInput>
+        <div *ngIf="quantity.invalid && (quantity.dirty || quantity.touched)"
+        class="alert alert-danger">
+
+      <div *ngIf="quantity.errors.required">
+        Non puoi lasciare il campo quantità vuoto
+      </div>
+
+
+
+    </div>
+
+
         <label class="text-center" for="form6">Inserisci la tua quantità</label>
 
       </div>
       <div class="md-form">
 
-        <input type="text" class="form-control text-center" id="form6" required [(ngModel)]="product.prezzo" name="prezzo" mdbInput>
+        <input type="text" class="form-control text-center" id="form6" required [(ngModel)]="product.prezzo" name="prezzo" #prezzo="ngModel"mdbInput>
+        <div *ngIf="prezzo.invalid && (prezzo.dirty || prezzo.touched)"
+        class="alert alert-danger">
+
+      <div *ngIf="prezzo.errors.required">
+        Non puoi lasciare il campo prezzo vuoto
+      </div>
+    </div>
         <label for="form6">Inserisci il prezzo</label>
 
       </div>
-
+    </div>
+    <div  style="float:right">
       <div class="md-form">
 
-        <input type="text" class="form-control text-center" id="form6" required [(ngModel)]="product.codiceBarre" name="codiceBarre" mdbInput>
+        <input type="text" class="form-control text-center" id="form6" required [(ngModel)]="product.codiceBarre" name="codiceBarre"#codiceBarre="ngModel" mdbInput>
+        <div *ngIf="codiceBarre.invalid && (codiceBarre.dirty || codiceBarre.touched)"
+        class="alert alert-danger">
+
+      <div *ngIf="codiceBarre.errors.required">
+        Non puoi lasciare il campo codice a barre vuoto
+      </div>
+    </div>
+
         <label for="form6">Inserisci il codice a barre</label>
 
       </div>
@@ -44,12 +83,20 @@
       </div>
       <div class="md-form">
 
-        <input type="text" class="form-control text-center" id="form6" required [(ngModel)]="product.minQuantity" name="minQuantity" mdbInput>
+        <input type="text" class="form-control text-center" id="form6" required [(ngModel)]="product.minQuantity" #minQuantity="ngModel" mdbInput>
+        <div *ngIf="minQuantity.invalid && (minQuantity.dirty || minQuantity.touched)"
+        class="alert alert-danger">
+
+      <div *ngIf="minQuantity.errors.required">
+        Non puoi lasciare il campo della quantità di controllo vuoto
+      </div>
+    </div>
+
         <label for="form6">Inserisci quantity di controllo
         </label>
 
       </div>
-
+</div>
 
 
 
@@ -71,13 +118,8 @@
 <br>
 <div class="list-group" >
 
-  <h2 class="list-group-item active dark grey darken-3"  *ngIf="magazzino" mdbWavesEffect>{{magazzino.name}}
+  <h2 class="list-group-item active dark grey darken-3 text-center"  *ngIf="magazzino" mdbWavesEffect>Magazzino: {{magazzino.name}}
 
-     <button type="button" mdbBtn color="elegant" class="relative waves-light" (click)="basicModal.show()">Aggiungi Prodotto</button>
-     <div class="md-form">
-      <input mdbInput type="text" id="form1" class="form-control" name="search" [(ngModel)]="searchText">
-      <label for="form1" class="">Ricerca</label>
-    </div>
     </h2>
 
 <div>
@@ -86,33 +128,33 @@
 
      <div class="list-group-item list-group-item-action waves-light  bordered-cyan">
 
-      <table class="table table-striped">
+      <table class="table table-striped" mdbTable mdbTableScroll scrollY="true" maxHeight="500" bordered="true" >
             <thead>
 
 
 
               <tr>
-                <th>Nome</th>
-                <th>Quantità</th>
-                <th>Prezzo</th>
-                <th>Codice a barre</th>
-                <th>Nota</th>
-                <th>Stato</th>
+                <th class="text-center">Nome</th>
+                <th class="text-center">Quantità</th>
+                <th class="text-center">Prezzo</th>
+                <th class="text-center">Codice a barre</th>
+                <th class="text-center">Nota</th>
+                <th class="text-center">Stato</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let product of products | async | filter:searchText">
-                <td>{{product.name}}</td>
-                <td>{{product.quantity}}</td>
-                <td>{{product.prezzo}}</td>
-                <td>{{product.codiceBarre}}</td>
-                <td>{{product.nota}}</td>
+                <td class="text-center">{{product.name}}</td>
+                <td class="text-center">{{product.quantity}}</td>
+                <td class="text-center">{{product.prezzo}}</td>
+                <td class="text-center">{{product.codiceBarre}}</td>
+                <td class="text-center">{{product.nota}}</td>
 
 
-               <td><mdb-icon *ngIf="product.quantity>product.minQuantity else: elseBlock" class="green-text pr-3" fas icon="battery-full"></mdb-icon></td>
+               <td class="text-center"><mdb-icon *ngIf="product.quantity>product.minQuantity else: elseBlock" class="green-text pr-3" fas icon="battery-full"></mdb-icon></td>
                <ng-template #elseBlock><mdb-icon class="amber-text pr-3" fas icon="battery-quarter"></mdb-icon></ng-template>
-                <td><button (click)="deleteProduct(product.id)" class="btn btn-danger"><mdb-icon far icon="trash-alt"></mdb-icon></button>
-                <td><button type="submit" mdbBtn color="elegant" class="relative waves-light" (click)=ProductDetails(product.id)><mdb-icon fas icon="wrench"></mdb-icon></button>
+                <td class="text-center"><button (click)="deleteProduct(product.id)" class="btn btn-danger"><mdb-icon far icon="trash-alt"></mdb-icon></button>
+                <td class="text-center"><button type="submit" mdbBtn color="elegant" class="relative waves-light" (click)=ProductDetails(product.id)><mdb-icon fas icon="wrench"></mdb-icon></button>
 
 
 
@@ -122,13 +164,18 @@
 
         </td>
       </tr>
+
     </tbody>
   </table>
 
-
-
-
+<div>
+  <mdb-icon fas icon="search"></mdb-icon><input  type="text" class="form-control" name="search" placeholder="Effettua Ricerca" [(ngModel)]="searchText">
 </div>
+</div>
+
+<button type="button" mdbBtn color="elegant" class="relative waves-light" (click)="basicModal.show()">Aggiungi Prodotto</button>
+
+
 
 
 </div>

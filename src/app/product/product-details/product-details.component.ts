@@ -1,3 +1,4 @@
+import { MagazziniService } from './../../magazzini/magazzini.service';
 import { Magazzino } from './../../magazzini/magazzino';
 import { Product } from './../product-services/Product';
 import { Component, OnInit } from '@angular/core';
@@ -15,23 +16,33 @@ export class ProductDetailsComponent implements OnInit {
 idP: number;
 product: Product= new Product();
 products: Observable<Product>;
+magazzini: Observable<Magazzino>;
+magazzino: Magazzino;
+
 edit = false;
 
   constructor(private route: ActivatedRoute,  public productService: ProductService,
-    private router: Router) {
+    private router: Router, public magazziniService: MagazziniService) {
 
      }
 
   ngOnInit() {
-
-
     this.idP = this.route.snapshot.params['idP'];
-
     this.productService.getProduct(this.idP)
-      .subscribe(data => {
-        console.log(data)
-        this.product = data;
-      }, error => console.log(error));
+    .subscribe(data => {
+      console.log(data)
+      this.product = data;
+    }, error => console.log(error));
+
+
+    this.magazziniService.getMagazzino(this.product.magazzino)
+    .subscribe(data => {
+      console.log(data)
+      this.magazzino = data;
+    }, error => console.log(error));
+
+this.reloadData();
+
   }
 
   editProduct(idP){
@@ -51,5 +62,11 @@ edit = false;
   MagazzinoDetail(){
     this.router.navigate(['list', this.product.magazzino]);
   }
+
+  getMagazzino(){
+
+this.magazzini=this.magazziniService.getMagazzino(this.product.magazzino);
+
+}
 
 }

@@ -1,18 +1,19 @@
 <!-- Table  -->
 <br>
-
-<table class="table text-center"striped="true">
+<div class="list-group-item list-group-item-action waves-light  bordered-cyan">
+<table class="table table-striped text-center"striped="true">
   <!-- Table head -->
   <thead *ngIf=product>
 
-    <h2 class="list-group-item active dark grey darken-3 text-center"  mdbWavesEffect>
-     Prodotto: {{product.name}} </h2>
+    <h2 class="list-group-item active dark grey darken-3 text-center"   mdbWavesEffect>
+     Prodotto: {{product.name}}  </h2>
 
   </thead>
   <!-- Table head -->
 
   <!-- Table body -->
   <tbody>
+
 <div class="md-form">
     <tr *ngIf="product">
       <td ><h5>Nome:</h5></td>
@@ -22,22 +23,21 @@
         <td ><h5>Quantità</h5></td>
             <td> <input type="number" class="form-control text-center md-form" value={{product.quantity}}  [(ngModel)]="product.quantity" name="quantity">
             </td>
-            </tr>
-</div>
-<div class="md-form">
-    <tr *ngIf=product>
+
         <td ><h5>Prezzo:</h5></td>
       <td>
         <input type="number" class="form-control text-center" value={{product.prezzo}} [(ngModel)]="product.prezzo" name="prezzo">
           </td>
+        </tr>
+          <tr *ngIf=product>
           <td ><h5>Codice a barre:</h5></td>
           <td>
             <input type="text" class="form-control text-center" value={{product.codiceBarre}}  [(ngModel)]="product.codiceBarre" name="codiceBarre">
               </td>
-            </tr>
-          </div>
-          <div class="md-form">
-    <tr *ngIf=product >
+
+
+
+
         <td ><h5>Nota:</h5></td>
         <td>
           <input type="text" class="form-control text-center"  value={{product.nota}} [(ngModel)]="product.nota" name="nota">
@@ -50,7 +50,9 @@
                 </td>
     </tr>
   </div>
+
   </tbody>
+
   <!-- Table body -->
   <button  type="button" mdbBtn color="elegant" class="relative waves-light" (click)="editProduct(product.id)">Modifica Prodotto</button>
   <button  type="button" mdbBtn color="elegant" class="relative waves-light" (click)="MagazzinoDetail(product.magazzino)">Torna al magazzino</button>
