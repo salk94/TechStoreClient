@@ -6,13 +6,13 @@
           <span aria-hidden="true">×</span>
         </button>
         <br>
-        <h4 class="modal-title w-100 text-center" id="myModalLabel">Nuovo prodotto</h4>
+        <h4 class="modal-title w-100 text-center" id="myModalLabel"><mdb-icon fas icon="plus"></mdb-icon>    Crea nuovo prodotto</h4>
         <br>
       </div>
      <div  style="float:left">
-      <div class="md-form">
+      <div id ="center" class="md-form">
 
-        <input type="text" class="form-control text-center" id="form6" required [(ngModel)]="product.name" name="name" #name="ngModel"mdbInput>
+        <input type="text" class="form-control text-center" id="form6 center" required [(ngModel)]="product.name" name="name" #name="ngModel"mdbInput>
 
         <div *ngIf="name.invalid && (name.dirty || name.touched)"
         class="alert alert-danger">
@@ -27,9 +27,9 @@
 
       </div>
 
-      <div class="md-form">
+      <div  id ="center" class="md-form">
 
-        <input type="text" class="form-control text-center" id="form6" required [(ngModel)]="product.quantity" name="quantity" #quantity="ngModel" mdbInput>
+        <input type="text" class="form-control text-center" id="form6 center" required [(ngModel)]="product.quantity" name="quantity" #quantity="ngModel" mdbInput>
         <div *ngIf="quantity.invalid && (quantity.dirty || quantity.touched)"
         class="alert alert-danger">
 
@@ -45,9 +45,9 @@
         <label class="text-center" for="form6">Inserisci la tua quantità</label>
 
       </div>
-      <div class="md-form">
+      <div  id ="center" class="md-form">
 
-        <input type="text" class="form-control text-center" id="form6" required [(ngModel)]="product.prezzo" name="prezzo" #prezzo="ngModel"mdbInput>
+        <input type="text" class="form-control text-center" id="form6 center" required [(ngModel)]="product.prezzo" name="prezzo" #prezzo="ngModel"mdbInput>
         <div *ngIf="prezzo.invalid && (prezzo.dirty || prezzo.touched)"
         class="alert alert-danger">
 
@@ -60,9 +60,9 @@
       </div>
     </div>
     <div  style="float:right">
-      <div class="md-form">
+      <div  id ="center" class="md-form">
 
-        <input type="text" class="form-control text-center" id="form6" required [(ngModel)]="product.codiceBarre" name="codiceBarre"#codiceBarre="ngModel" mdbInput>
+        <input type="text" class="form-control text-center" id="form6 center" required [(ngModel)]="product.codiceBarre" name="codiceBarre"#codiceBarre="ngModel" mdbInput>
         <div *ngIf="codiceBarre.invalid && (codiceBarre.dirty || codiceBarre.touched)"
         class="alert alert-danger">
 
@@ -71,19 +71,19 @@
       </div>
     </div>
 
-        <label for="form6">Inserisci il codice a barre</label>
+        <label  id ="center" for="form6">Inserisci il codice a barre</label>
 
       </div>
 
-      <div class="md-form">
+      <div  id ="center" class="md-form">
 
-        <input type="text" class="form-control text-center" id="form6" required [(ngModel)]="product.nota" name="nota" mdbInput>
+        <input type="text" class="form-control text-center" id="form6 center" required [(ngModel)]="product.nota" name="nota" mdbInput>
         <label for="form6">Inserisci eventuale nota</label>
 
       </div>
-      <div class="md-form">
+      <div  id ="center" class="md-form">
 
-        <input type="text" class="form-control text-center" id="form6" required [(ngModel)]="product.minQuantity" #minQuantity="ngModel" mdbInput>
+        <input type="text" class="form-control text-center" id="form6 center" required [(ngModel)]="product.minQuantity" #minQuantity="ngModel" mdbInput>
         <div *ngIf="minQuantity.invalid && (minQuantity.dirty || minQuantity.touched)"
         class="alert alert-danger">
 
@@ -118,10 +118,10 @@
 <br>
 <div class="list-group">
 <div id="titolo">
-  <h2  class="list-group-item active dark grey darken-3 text-center"  *ngIf="magazzino" mdbWavesEffect>Magazzino: {{magazzino.name}}
+  <h2  class="list-group-item active dark grey darken-3 text-center"  *ngIf="magazzino" mdbWavesEffect><mdb-icon fas icon="warehouse"></mdb-icon>    Magazzino: {{magazzino.name}}
 
     </h2>
-    <input type="text" class="form-control" name="search" placeholder=" Effettua Ricerca" [(ngModel)]="searchText">
+    <input type="text" class="form-control text-center" name="search" placeholder="Inserisci valore da cercare" [(ngModel)]="searchText">
   </div>
 
 
@@ -173,8 +173,8 @@
 </div>
 
 
-<button id = "titolo" type="button" mdbBtn color="elegant" class="relative waves-light" (click)="basicModal.show()">Aggiungi Prodotto</button>
-
+<button id = "titolo" type="button" mdbBtn color="elegant" class="relative waves-light" (click)="basicModal.show()"><mdb-icon fas icon="plus"></mdb-icon>     Aggiungi Prodotto</button>
+<button id = "torna" type="button" mdbBtn color="elegant" class="relative waves-light" routerLink="/magazzini" ><mdb-icon fas icon="undo-alt"></mdb-icon>    Torna ai magazzini</button>
 
 
 

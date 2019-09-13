@@ -4,6 +4,10 @@
     margin: 0 auto;
 
 }
+h4{
+  color:white
+
+  }
 
   #buttoncontainer {
     text-align: center;
@@ -13,10 +17,24 @@
       width: 200%;
       margin: 0 auto;
     }
-
-    input{
-      width: 200%;
+    input[type="text"]{
+      background-color : #e9e9e9;
     }
+
+#inputcenter {
+  width: 85%;
+  margin: 0 auto;
+
+
+}
+
+#center {
+  margin: 0 auto;
+  width: 85%;
+margin-top: 10%;
+margin-bottom: 10%;
+}
+
 
 
     .scrollbar-deep-purple::-webkit-scrollbar-track {

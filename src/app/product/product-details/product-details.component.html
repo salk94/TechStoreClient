@@ -2,7 +2,7 @@
 <br>
 <div class="list-group">
     <div id="titolo">
-      <h2 id="tabella" class="list-group-item active dark grey darken-3 text-center"  *ngIf="product" mdbWavesEffect>Prodotto: {{product.name}}
+      <h2 id="tabella" class="list-group-item active dark grey darken-3 text-center"  *ngIf="product" mdbWavesEffect><mdb-icon fas icon="dolly-flatbed"></mdb-icon>      Prodotto: {{product.name}}
 
         </h2>
       </div>
@@ -60,8 +60,8 @@
 </table>
 </div>
 <div id="bottoniSotto">
-  <button id="bottoneSingolo" type="button" mdbBtn color="elegant" class="relative waves-light" (click)="editProduct(product.id)">Modifica Prodotto</button>
+  <button id="bottoneSopra" type="button" mdbBtn color="elegant" class="relative waves-light" (click)="editProduct(product.id)"><mdb-icon far icon="save"></mdb-icon>    Salva Modifiche</button>
 
-<button id="bottoneSingolo" type="button" mdbBtn color="elegant" class="relative waves-light" (click)="MagazzinoDetail(product.magazzino)">Torna al magazzino</button>
+<button id="bottoneSotto" type="button" mdbBtn color="elegant" class="relative waves-light" (click)="MagazzinoDetail(product.magazzino)"><mdb-icon fas icon="redo-alt"></mdb-icon>   Torna al magazzino: {{product.magazzino}}</button>
 
 </div>

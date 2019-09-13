@@ -7,6 +7,7 @@ import { ProductService } from '../product-services/product.service';
 import { Observable } from 'rxjs';
 
 import { Router, ActivatedRoute } from '@angular/router';
+import { runInThisContext } from 'vm';
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
@@ -17,11 +18,12 @@ idP: number;
 product: Product= new Product();
 products: Observable<Product>;
 magazzini: Observable<Magazzino>;
-magazziniService: MagazziniService;
+magazzino: Magazzino = new Magazzino();
+
 edit = false;
 
   constructor(private route: ActivatedRoute,  public productService: ProductService,
-    private router: Router) {
+    private router: Router, public magazziniService: MagazziniService) {
 
      }
 
@@ -36,6 +38,12 @@ edit = false;
         console.log(data)
         this.product = data;
       }, error => console.log(error));
+
+
+
+
+
+
   }
 
   editProduct(idP){
@@ -57,9 +65,11 @@ edit = false;
   }
 
   getMagazzino(){
-
-this.magazziniService.getMagazzino(this.product.magazzino);
-
+    this.magazziniService.getMagazzino(this.product.magazzino)
+    .subscribe(data => {
+      console.log(data)
+      this.magazzino = data;
+    }, error => console.log(error));
 }
 
 }

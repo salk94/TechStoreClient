@@ -5,22 +5,26 @@
         <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
           <span aria-hidden="true">×</span>
         </button>
-        <h4 class="modal-title w-100" id="myModalLabel">Nuovo Magazzino</h4>
+        <br>
+        <h4 class="modal-title w-100 text-center" id="myModalLabel"><mdb-icon fas icon="plus"></mdb-icon>      Crea Nuovo Magazzino</h4>
+        <br>
       </div>
-      <div class="md-form">
+      <div id="center" class="md-form">
+
+
+          <input type="text" class="form-control" id="form6 inputcenter" required [(ngModel)]="magazzino.name" name="name" mdbInput>
+          <label for="form6" >Inserisci il nome del magazzino</label>
 
 
 
-          <input type="text" class="form-control" id="form6" required [(ngModel)]="magazzino.name" name="name" mdbInput>
-          <label for="form6">Inserisci il nome del magazzino</label>
 
 
 
 
       </div>
       <div class="modal-footer">
-        <button type="button" mdbBtn color="elegant" class="waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Chiudi</button>
-        <button type="submit" (click)="onSubmit()" mdbBtn color="elegant" class="relative waves-light" mdbWavesEffect>Crea</button>
+        <button type="button" mdbBtn color="elegant" class="waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect><mdb-icon fas icon="times"></mdb-icon>    Chiudi</button>
+        <button type="submit" (click)="onSubmit()" mdbBtn color="elegant" class="relative waves-light" mdbWavesEffect><mdb-icon far icon="save"></mdb-icon> Crea Magazzino</button>
       </div>
     </div>
   </div>
@@ -33,19 +37,48 @@
   <div class="row">
 
     <div  class="col-md-6 mb-4 " >
-        <h2 class="list-group-item active dark grey darken-3 text-center"  mdbWavesEffect>
+        <h2 class="list-group-item active dark grey darken-3 text-center"  mdbWavesEffect><mdb-icon fas icon="warehouse"></mdb-icon>
             I tuoi Magazzini </h2>
 
-                <input type="text" class="form-control" name="search" placeholder=" Effettua Ricerca" [(ngModel)]="searchText">
+                <input id="ricerca" type="text" class="form-control text-center" name="search" placeholder="Inserisci valore da cercare" [(ngModel)]="searchText">
 
      <mdb-card class="example-1 scrollbar-dusty-grass">
       <mdb-card-body>
      <div class="list-group-item list-group-item-action waves-light" *ngFor= "let magazzino of magazzini | async | filter:searchText">
   <h3 class ="text-center">{{magazzino.name}}</h3>
   <div id="buttoncontainer">
-<button  class =" center"  (click)=MagazzinoDetail(magazzino.id)  type = "button" mdbBtn color="elegant" mdbWavesEffect>Gestisci</button>
-<button (click)="deleteMagazzino(magazzino.id)" class="center"mdbBtn color="elegant" mdbWavesEffect>Canc</button>
-<button type="submit" mdbBtn color="elegant" class="relative waves-light" (click)="updateModal.show()">Modifica</button>
+<button  class =" center"  (click)=MagazzinoDetail(magazzino.id)  type = "button" mdbBtn color="elegant" mdbWavesEffect>Gestisci         <mdb-icon fas icon="cogs"></mdb-icon></button>
+<button type="submit" mdbBtn color="elegant" class="relative waves-light" (click)="updateModal.show()"> Modifica  <mdb-icon fas icon="wrench"></mdb-icon>       </button>
+<button (click)="deleteMagazzino(magazzino.id)" class="btn btn-danger"><mdb-icon far icon="trash-alt"></mdb-icon></button>
+
+<div mdbModal #updateModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myUpdateModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header-dark grey darken-3">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="updateModal.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+        <br>
+        <h4 class="modal-title w-100 text-center" id="myModalLabel"><mdb-icon fas icon="wrench"></mdb-icon>   Modifica nome del magazzino: {{magazzino.name}}</h4>
+        <br>
+
+      </div>
+      <div id ="center" class="md-form">
+
+
+          <input  type="text" class="form-control text-center" id="form6 inputcenter" [ngModel]="magazzino.name" [(ngModel)]="newMagazzino.name"  name="name" >
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" mdbBtn color="elegant" class="waves-light" aria-label="Close" (click)="updateModal.hide()" mdbWavesEffect><mdb-icon fas icon="times"></mdb-icon>     Chiudi</button>
+        <button type="submit" (click)="editMagazzino(magazzino.id)" mdbBtn color="elegant" class="relative waves-light" mdbWavesEffect><mdb-icon far icon="save"></mdb-icon>      Salva modifiche</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 </div>
 </div>
 
@@ -56,39 +89,14 @@
 
 </mdb-card>
 
-    <button id="ricerca" type="button" mdbBtn color="elegant" class="relative waves-light" (click)="basicModal.show()"  >Crea Nuovo Magazzino</button>
-
-
-</div>
-
-</div>
+    <button id="ricerca" type="button" mdbBtn color="elegant" class="relative waves-light" (click)="basicModal.show()"  ><mdb-icon fas icon="plus"></mdb-icon>     Crea Nuovo Magazzino</button>
 
 
 
 
-  <div mdbModal #updateModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myUpdateModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
-            <span aria-hidden="true">×</span>
-          </button>
-          <h4 class="modal-title w-100" id="myModalLabel">Cambia nome Magazzino</h4>
-        </div>
-        <div class="md-form">
 
 
-            <input  type="text" class="form-control" id="form6" [ngModel]="magazzino.name" [(ngModel)]="newMagazzino.name" name="name" >
 
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" mdbBtn color="elegant" class="waves-light" aria-label="Close" (click)="updateModal.hide()" mdbWavesEffect>Chiudi</button>
-          <button type="submit" (click)="editMagazzino(magazzino.id)" mdbBtn color="elegant" class="relative waves-light" mdbWavesEffect>Modifica</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
 
 
