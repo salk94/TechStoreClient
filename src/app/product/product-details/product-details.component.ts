@@ -17,32 +17,25 @@ idP: number;
 product: Product= new Product();
 products: Observable<Product>;
 magazzini: Observable<Magazzino>;
-magazzino: Magazzino;
-
+magazziniService: MagazziniService;
 edit = false;
 
   constructor(private route: ActivatedRoute,  public productService: ProductService,
-    private router: Router, public magazziniService: MagazziniService) {
+    private router: Router) {
 
      }
 
   ngOnInit() {
+
+
     this.idP = this.route.snapshot.params['idP'];
+
+
     this.productService.getProduct(this.idP)
-    .subscribe(data => {
-      console.log(data)
-      this.product = data;
-    }, error => console.log(error));
-
-
-    this.magazziniService.getMagazzino(this.product.magazzino)
-    .subscribe(data => {
-      console.log(data)
-      this.magazzino = data;
-    }, error => console.log(error));
-
-this.reloadData();
-
+      .subscribe(data => {
+        console.log(data)
+        this.product = data;
+      }, error => console.log(error));
   }
 
   editProduct(idP){
@@ -65,7 +58,7 @@ this.reloadData();
 
   getMagazzino(){
 
-this.magazzini=this.magazziniService.getMagazzino(this.product.magazzino);
+this.magazziniService.getMagazzino(this.product.magazzino);
 
 }
 

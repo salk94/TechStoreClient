@@ -1,9 +1,7 @@
-
-
 <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header-dark grey darken-3">
         <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
           <span aria-hidden="true">×</span>
         </button>
@@ -11,9 +9,13 @@
       </div>
       <div class="md-form">
 
-        <mdb-icon fas icon="warehouse" aria-hidden="true"></mdb-icon>
+
+
           <input type="text" class="form-control" id="form6" required [(ngModel)]="magazzino.name" name="name" mdbInput>
           <label for="form6">Inserisci il nome del magazzino</label>
+
+
+
 
       </div>
       <div class="modal-footer">
@@ -26,18 +28,42 @@
 
 <br>
 
-<div>
 
-<div class="list-group" style="width: 600px">
 
-  <h2 class="list-group-item active dark grey darken-3 text-center"  mdbWavesEffect>
-     I tuoi Magazzini </h2>
-     <div class="list-group-item list-group-item-action waves-light" *ngFor= "let magazzino of magazzini | async">
+  <div class="row">
+
+    <div  class="col-md-6 mb-4 " >
+        <h2 class="list-group-item active dark grey darken-3 text-center"  mdbWavesEffect>
+            I tuoi Magazzini </h2>
+
+                <input type="text" class="form-control" name="search" placeholder=" Effettua Ricerca" [(ngModel)]="searchText">
+
+     <mdb-card class="example-1 scrollbar-dusty-grass">
+      <mdb-card-body>
+     <div class="list-group-item list-group-item-action waves-light" *ngFor= "let magazzino of magazzini | async | filter:searchText">
   <h3 class ="text-center">{{magazzino.name}}</h3>
   <div id="buttoncontainer">
 <button  class =" center"  (click)=MagazzinoDetail(magazzino.id)  type = "button" mdbBtn color="elegant" mdbWavesEffect>Gestisci</button>
 <button (click)="deleteMagazzino(magazzino.id)" class="center"mdbBtn color="elegant" mdbWavesEffect>Canc</button>
 <button type="submit" mdbBtn color="elegant" class="relative waves-light" (click)="updateModal.show()">Modifica</button>
+</div>
+</div>
+
+
+
+
+</mdb-card-body>
+
+</mdb-card>
+
+    <button id="ricerca" type="button" mdbBtn color="elegant" class="relative waves-light" (click)="basicModal.show()"  >Crea Nuovo Magazzino</button>
+
+
+</div>
+
+</div>
+
+
 
 
   <div mdbModal #updateModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myUpdateModalLabel" aria-hidden="true">
@@ -51,7 +77,7 @@
         </div>
         <div class="md-form">
 
-          <mdb-icon fas icon="warehouse" aria-hidden="true"></mdb-icon>
+
             <input  type="text" class="form-control" id="form6" [ngModel]="magazzino.name" [(ngModel)]="newMagazzino.name" name="name" >
 
 
@@ -65,8 +91,9 @@
   </div>
 
 
-</div>
-    </div>
-  <button type="button" mdbBtn color="elegant" class="relative waves-light" (click)="basicModal.show()"  >Crea Nuovo Magazzino</button>
-</div>
+
+
+
+
+
 

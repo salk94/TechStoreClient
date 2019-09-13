@@ -1,17 +1,19 @@
-<!-- Table  -->
+
 <br>
-<div class="list-group-item list-group-item-action waves-light  bordered-cyan">
-<table class="table table-striped text-center"striped="true">
-  <!-- Table head -->
-  <thead *ngIf=product>
+<div class="list-group">
+    <div id="titolo">
+      <h2 id="tabella" class="list-group-item active dark grey darken-3 text-center"  *ngIf="product" mdbWavesEffect>Prodotto: {{product.name}}
 
-    <h2 class="list-group-item active dark grey darken-3 text-center"   mdbWavesEffect>
-     Prodotto: {{product.name}}  </h2>
+        </h2>
+      </div>
 
-  </thead>
-  <!-- Table head -->
 
-  <!-- Table body -->
+
+
+         <div id ="tabella" class="list-group-item list-group-item-action waves-light  bordered-cyan">
+
+<table id= "tabella"class="table  text-center"striped="true">
+
   <tbody>
 
 <div class="md-form">
@@ -53,9 +55,13 @@
 
   </tbody>
 
-  <!-- Table body -->
-  <button  type="button" mdbBtn color="elegant" class="relative waves-light" (click)="editProduct(product.id)">Modifica Prodotto</button>
-  <button  type="button" mdbBtn color="elegant" class="relative waves-light" (click)="MagazzinoDetail(product.magazzino)">Torna al magazzino</button>
-</table>
-<!-- Table  -->
 
+
+</table>
+</div>
+<div id="bottoniSotto">
+  <button id="bottoneSingolo" type="button" mdbBtn color="elegant" class="relative waves-light" (click)="editProduct(product.id)">Modifica Prodotto</button>
+
+<button id="bottoneSingolo" type="button" mdbBtn color="elegant" class="relative waves-light" (click)="MagazzinoDetail(product.magazzino)">Torna al magazzino</button>
+
+</div>

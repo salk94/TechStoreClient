@@ -116,17 +116,18 @@
 
 
 <br>
-<div class="list-group" >
-
-  <h2 class="list-group-item active dark grey darken-3 text-center"  *ngIf="magazzino" mdbWavesEffect>Magazzino: {{magazzino.name}}
+<div class="list-group">
+<div id="titolo">
+  <h2  class="list-group-item active dark grey darken-3 text-center"  *ngIf="magazzino" mdbWavesEffect>Magazzino: {{magazzino.name}}
 
     </h2>
+    <input type="text" class="form-control" name="search" placeholder=" Effettua Ricerca" [(ngModel)]="searchText">
+  </div>
 
-<div>
 
 
 
-     <div class="list-group-item list-group-item-action waves-light  bordered-cyan">
+     <div id ="tabella" class="list-group-item list-group-item-action waves-light  bordered-cyan">
 
       <table class="table table-striped" mdbTable mdbTableScroll scrollY="true" maxHeight="500" bordered="true" >
             <thead>
@@ -168,15 +169,13 @@
     </tbody>
   </table>
 
-<div>
-  <mdb-icon fas icon="search"></mdb-icon><input  type="text" class="form-control" name="search" placeholder="Effettua Ricerca" [(ngModel)]="searchText">
-</div>
-</div>
-
-<button type="button" mdbBtn color="elegant" class="relative waves-light" (click)="basicModal.show()">Aggiungi Prodotto</button>
-
-
-
 
 </div>
+
+
+<button id = "titolo" type="button" mdbBtn color="elegant" class="relative waves-light" (click)="basicModal.show()">Aggiungi Prodotto</button>
+
+
+
+
 </div>

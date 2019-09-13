@@ -18,6 +18,7 @@ export class MagazziniComponent implements OnInit {
   submitted = false;
   edit = false;
   magazzini: Observable<Magazzino[]>;
+  searchText : string;
 
 constructor(private magazziniService: MagazziniService, private router: Router, private productService: ProductService) { }
 
