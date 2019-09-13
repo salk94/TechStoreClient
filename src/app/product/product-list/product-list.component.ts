@@ -30,7 +30,7 @@ export class ProductListComponent implements OnInit {
               ) {}
 
   ngOnInit() {
-    this.magazzino = new Magazzino();
+
     this.idm = this.route.snapshot.params['id'];
     this.magazziniService.getMagazzino(this.idm)
     .subscribe(data => {

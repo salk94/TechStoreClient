@@ -7,7 +7,7 @@ import { ProductService } from '../product-services/product.service';
 import { Observable } from 'rxjs';
 
 import { Router, ActivatedRoute } from '@angular/router';
-import { runInThisContext } from 'vm';
+
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
@@ -15,6 +15,7 @@ import { runInThisContext } from 'vm';
 })
 export class ProductDetailsComponent implements OnInit {
 idP: number;
+idM:number;
 product: Product= new Product();
 products: Observable<Product>;
 magazzini: Observable<Magazzino>;
@@ -23,15 +24,14 @@ magazzino: Magazzino = new Magazzino();
 edit = false;
 
   constructor(private route: ActivatedRoute,  public productService: ProductService,
-    private router: Router, public magazziniService: MagazziniService) {
+    private router: Router, private magazziniService: MagazziniService) {
 
      }
 
   ngOnInit() {
 
 
-    this.idP = this.route.snapshot.params['idP'];
-
+    this.idP =  this.route.snapshot.params['idP']
 
     this.productService.getProduct(this.idP)
       .subscribe(data => {
@@ -42,7 +42,7 @@ edit = false;
 
 
 
-
+    this.getMagazzino();
 
   }
 
