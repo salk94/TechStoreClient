@@ -111,11 +111,6 @@
 </div>
 
 
-
-
-
-
-
 <br>
 <div class="list-group">
 <div id="titolo">
@@ -155,10 +150,36 @@
 
                <td class="text-center"><mdb-icon *ngIf="product.quantity>product.minQuantity else: elseBlock" class="green-text pr-3" fas icon="battery-full"></mdb-icon></td>
                <ng-template #elseBlock><mdb-icon class="amber-text pr-3" fas icon="battery-quarter"></mdb-icon></ng-template>
-                <td class="text-center"><button (click)="deleteProduct(product.id)" class="btn btn-danger"><mdb-icon far icon="trash-alt"></mdb-icon></button>
+                <td class="text-center"><button (click)="deleteModal.show()" class="btn btn-danger"><mdb-icon far icon="trash-alt"></mdb-icon></button>
                 <td class="text-center"><button type="submit" mdbBtn color="elegant" class="relative waves-light" (click)=ProductDetails(product.id)><mdb-icon fas icon="wrench"></mdb-icon></button>
 
 
+                  <div mdbModal #deleteModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myUpdateModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header-dark grey darken-3">
+                          <button type="button" class="close pull-right" aria-label="Close" (click)="deleteModal.hide()">
+                            <span aria-hidden="true">×</span>
+                          </button>
+                          <br>
+                          <h4 class="modal-title w-100 text-center" id="myModalLabel"><mdb-icon fas icon="wrench"></mdb-icon>   Cancella prodotto: {{product.name}}</h4>
+                          <br>
+                        </div>
+                          <div id ="center1" class="md-form">
+
+
+                            <h5  class="text-center">Sei sicuro di cancellare il prodotto: {{product.name}} ?</h5>
+
+                        </div>
+
+
+                        <div class="modal-footer">
+                          <button type="button" mdbBtn color="elegant" class="waves-light" aria-label="Close" (click)="deleteModal.hide()" mdbWavesEffect><mdb-icon fas icon="times"></mdb-icon>     Chiudi</button>
+                          <button (click)="deleteProduct(product.id)" class="btn btn-danger"><mdb-icon far icon="trash-alt"></mdb-icon>  Conferma cancellazione</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
 
 
@@ -169,6 +190,7 @@
 
     </tbody>
   </table>
+
 
 
 </div>
